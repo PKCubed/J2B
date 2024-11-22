@@ -3,7 +3,7 @@ Written by Peter Kyle 2024 for Journey to Bethlehem Timekeeping
 Wenatchee WA Seventh Day Adventist Church
 Any questions or comments, please contact me at
 peter@pkcubed.net
-(509) 433-9382
+(***) ***-****
 These contacts may not work in the future, but please try to reach out to me however possible.
 
 Feel free to leave your name below to let others know that you've been here and what you did:
