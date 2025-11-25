@@ -1,0 +1,142 @@
+pygame 2.1.2 (SDL 2.26.5, Python 3.11.2)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+ * Serving Flask app 'main'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.1.1:5000
+Press CTRL+C to quit
+10.12.0.1 - - [24/Nov/2024 17:49:40] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 17:50:10] "GET /GOGOGO HTTP/1.1" 200 -
+303030 Received
+GOGOGO Received
+Traceback (most recent call last):
+  File "/home/pi/main.py", line 89, in <module>
+    for event in pygame.event.get():
+                 ^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+pygame 2.1.2 (SDL 2.26.5, Python 3.11.2)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+ * Serving Flask app 'main'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.1.1:5000
+Press CTRL+C to quit
+10.12.0.1 - - [24/Nov/2024 17:53:40] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 17:54:10] "GET /GOGOGO HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 17:57:23] "GET /303030 HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 17:57:53] "GET /GOGOGO HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:03:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:04:05] "GET /GOGOGO HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:07:35] "GET /303030 HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:08:05] "GET /GOGOGO HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:11:35] "GET /303030 HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:12:05] "GET /GOGOGO HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:15:35] "GET /303030 HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:16:05] "GET /GOGOGO HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:19:35] "GET /303030 HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:20:05] "GET /GOGOGO HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [24/Nov/2024 18:23:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:24:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:27:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:28:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:31:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:32:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:35:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:36:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:39:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:40:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:43:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:44:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:47:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:48:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:51:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:52:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:55:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:56:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 18:59:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:00:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:03:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:04:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:07:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:08:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:11:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:12:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:15:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:16:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:19:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:20:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:23:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:24:05] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:27:35] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [24/Nov/2024 19:28:05] "GET /GOGOGO HTTP/1.1" 200 -
+pygame 2.1.2 (SDL 2.26.5, Python 3.11.2)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+ * Serving Flask app 'main'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.1.1:5000
+Press CTRL+C to quit
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [01/Dec/2024 14:33:03] "GET /303030 HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [01/Dec/2024 14:33:10] "GET /GOGOGO HTTP/1.1" 200 -
+10.12.0.1 - - [01/Dec/2024 14:33:14] "GET /303030 HTTP/1.1" 200 -
+10.12.0.1 - - [01/Dec/2024 14:33:44] "GET /GOGOGO HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [01/Dec/2024 14:37:14] "GET /303030 HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+10.12.0.1 - - [01/Dec/2024 14:37:44] "GET /GOGOGO HTTP/1.1" 200 -
+ALSA lib pcm.c:8570:(snd_pcm_recover) underrun occurred
+303030 Received
+GOGOGO Received
+303030 Received
+GOGOGO Received
+303030 Received
+GOGOGO Received
