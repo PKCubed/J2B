@@ -1,7 +1,7 @@
-call_duration = 2 # Seconds
+call_duration = 30 # Seconds
 
 
-
+import os
 import threading
 from flask import Flask, request, jsonify
 import pygame
@@ -11,16 +11,20 @@ import requests
 
 timekeeper_ip = "10.12.0.1"
 
+TARGET_DISPLAY_INDEX = 2
+
+os.environ['SDL_VIDEO_WINDOW_POS'] = str(TARGET_DISPLAY_INDEX)
+
 app = Flask(__name__)
 
 # Pygame initialization
 pygame.init()
-screen = pygame.display.set_mode((1900, 1080), pygame.NOFRAME)
+screen = pygame.display.set_mode((1920, 1080), pygame.NOFRAME, display=TARGET_DISPLAY_INDEX)
 pygame.display.set_caption("Pygame with Web GUI")
 num_font = pygame.font.Font("font.ttf", 400)
-now_calling_font = pygame.font.Font("font.ttf", 100)
-current_group_font = pygame.font.Font("font.ttf", 40)
-performer_font = pygame.font.Font("font.ttf", 40)
+now_calling_font = pygame.font.Font("font.ttf", 140)
+current_group_font = pygame.font.Font("font.ttf", 80)
+performer_font = pygame.font.Font("font.ttf", 80)
 current_group_num = 0
 call_timer = 0
 performer_text = ''
@@ -34,6 +38,7 @@ def update_group_num():
         if data and 'new_group_num' in data:
             current_group_num = data['new_group_num']
             call_timer = time.time()
+            requests.get("http://10.0.1.3:1880/endpoint/callgroup")
             break  # Exit the loop after receiving new text
 
 def update_performer_text():
@@ -54,6 +59,146 @@ def update_group_num_route():
 def update_performer_text_route():
     update_performer_text()
     return jsonify({'status': 'success'})
+
+@app.route('/clock')
+def clock_page():
+    return '''
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Group Control Panel</title>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=SUSE:wght@100..800&display=swap');
+        body {
+            background-color: black;
+            color: white;
+            font-family: "Nunito", sans-serif;
+            font-size: 100px;
+            text-align: center;
+            line-spacing
+        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button {  
+
+           opacity: 1;
+
+        }
+        .number {
+            width: 90%;
+            font-size: 150px;
+            text-align: center;
+            border-radius: 20px;
+        }
+        .master-clock {
+            border-style: solid;
+            border-radius: 20px;
+            width: 90%;
+            border-width: 2px;
+            border-color: white;
+            margin: auto;
+            margin-top: 40px;
+        }
+        .btn {
+            font-family: "Nunito", sans-serif;
+            border: none;
+            text-decoration: none;
+            background-color: #222;
+            color: white;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            width: 90%;
+            margin: 0;
+            margin-top: 40px;
+            border-radius: 20px;
+            font-size: 100px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        p {
+            margin: 0;
+        }
+        h4 {
+            margin: 0;
+        }
+        .btn:hover {background: #aaa;}
+        .btn:active {background: #ddd;}
+        </style>
+    </head>
+    <body>
+        </div>
+        <div class="master-clock">
+            <h4>Master Clock: </h4>
+            <p id="mclock"></p>
+            <p id="countdown-clock"></p>
+            <p id="status"></p>
+        </div>
+        <a class="btn" href="/">Home</a>
+    </body>
+    <script>
+        var trigger_timer;
+        const mclock = document.getElementById("mclock");
+        const countdown_clock = document.getElementById("countdown-clock");
+        const status_element = document.getElementById("status");
+        function callGroup() {
+            const group_num_input = document.getElementById("group_num_input");
+            const newGroupNum = group_num_input.value;
+            group_num_input.value = parseInt(newGroupNum) + 1;
+            fetch('/update_group_num', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({new_group_num: newGroupNum})
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        }
+        function pad(num, size) {
+            num = num.toString();
+            while (num.length < size) num = "0" + num;
+            return num;
+        }
+        function getTime() {
+            fetch("/time")
+            .then(response => response.json())
+            .then(data => {
+                trigger_timer = Math.floor(parseFloat(data));
+            });
+            //console.log(trigger_timer);
+            if (trigger_timer != -1) {
+                var hours = pad(Math.floor((trigger_timer-30) / (60*60)),2);
+                var minutes = pad((Math.floor((trigger_timer-30) / 60) % 60),2);
+                var seconds = pad(((trigger_timer-30) % (60)),2);
+                var cd_minutes = 3-(minutes % 4);
+                var cd_seconds = 60-(seconds % (4*60));
+                if (seconds < 0) {
+                    hours = 0;
+                    minutes = 0;
+                }
+                mclock.innerHTML = hours.toString() + ":" + minutes.toString() + ":" + seconds.toString();
+                countdown_clock.innerHTML = "<b>" + pad(cd_minutes.toString(), 1) + ":" + pad(cd_seconds.toString(), 2) + "</b>";
+                if (cd_minutes == 0 && cd_seconds <= 30) {
+                    status_element.innerHTML = "30 30 30";
+                } else if (cd_minutes == 3 && cd_seconds >= 50) {
+                    status_element.innerHTML = "GO GO GO";
+                } else {
+                    status_element.innerHTML = "Running";
+                }
+            } else {
+                mclock.innerHTML = "";
+                countdown_clock.innerHTML = "";
+                status_element.innerHTML = "Idle";
+            }
+        }
+        setInterval(getTime, 250);
+    </script>
+    </html>
+    '''
 
 @app.route('/')
 def index():
@@ -88,6 +233,7 @@ def index():
         </style>
     </head>
     <body>
+        <a class="btn" href="/clock">View the Clock</a>
         <a class="btn" href="/groups">Call Groups</a><br>
         <a class="btn" href="/performers">Change Performers</a>
     </body>
