@@ -10,7 +10,7 @@ In Christmas of 2024, we built a new system. Peter Kyle designed an automated sy
 
 
 <img width="956" height="650" alt="Controller" src="https://github.com/user-attachments/assets/8df7c5a0-12f7-4bcf-94be-f2206f531ece" />
-<img width="912" height="888" alt="Candle" src="https://github.com/user-attachments/assets/a726991a-932e-4260-94cb-2117fecc82a1" />\
+<img width="912" height="888" alt="Candle" src="https://github.com/user-attachments/assets/a726991a-932e-4260-94cb-2117fecc82a1" />
 
 
 With this new system, a web interface was also built. People can open their web browser on their phone or computer and navigate to the public-facing web interface to view the timekeeping clock. People responsible for calling groups and setting the current performer text on the projector screen can also use this web interface to do this.
