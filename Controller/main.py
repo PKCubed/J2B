@@ -23,13 +23,13 @@ Feel free to leave your name below to let others know that you've been here and 
 
 """
 
-start_text="J2B Timekeeper Panel"
+start_text="J2B Timekeeper Panel" # This is the text to be displayed at startup
 running_text = "J2B Timekeeper Panel"
 
 message = ""
 last_message = ""
 
-audio_player_ip_address = "10.12.2.1"
+audio_player_ip_address = "10.12.2.1" # This is the IP address of the raspberry pi in the village that plays audio through speakers in the village. If this is not set correctly, audio will not work!
 
 from RPLCD.i2c import CharLCD
 import RPi.GPIO as GPIO
@@ -50,7 +50,7 @@ mode_led_pin = 5
 trigger_button_pin = 23
 trigger_led_pin = 6
 
-button_debounce_time = 0.100
+button_debounce_time = 0.100 # The duration to lengthen any button press to in order to reject button bouncing
 
 total_duration = 4 *60 # 4 Minutes
 timer_duration = 30 # 30 Seconds
@@ -98,9 +98,9 @@ def update_status():
 	global message
 	global last_message
 	
-	if mode == "Manual":
+	if mode == "Manual": # If we're in manual mode
 	
-		if time.time() <= trigger_timer + timer_duration:
+		if time.time() <= trigger_timer + timer_duration: # We're currently within the 30 second (timer_duration) warning period (30 30 30)
 			status = "30 30 30!"
 			if status != last_status:
 				print(status)
@@ -117,7 +117,7 @@ def update_status():
 				lcd.write_string(str(datetime.datetime.fromtimestamp(countdown).strftime("%-M:%S"))+(" "*(8-len(str(datetime.timedelta(seconds=countdown))))))
 			led_value = math.ceil((timer_duration+trigger_timer-time.time()) % 0.5 * 4 - 1)
 			GPIO.output(trigger_led_pin, led_value)
-		elif time.time() <= trigger_timer + timer_duration + go_duration:
+		elif time.time() <= trigger_timer + timer_duration + go_duration: # It's currently go time, within 10 (go duration) seconds after
 			status = "Go Go Go!"
 			if status != last_status:
 				print(status)
@@ -141,9 +141,9 @@ def update_status():
 				lcd.write_string(status+(" "*(9-len(status))))
 				lcd.cursor_pos = (1,0) # 2nd Line
 				lcd.write_string(" "*9)
-			GPIO.output(trigger_led_pin, 0)
+			GPIO.output(trigger_led_pin, 0) # Turn off the trigger led because we're in idle mode
 			
-	elif mode == "Automatic":
+	elif mode == "Automatic": # If we're in automatic mode
 		if trigger_timer:
 			mode_led_value = math.ceil((trigger_timer-time.time()) % 0.5 * 4 - 1)
 			GPIO.output(mode_led_pin, mode_led_value)
@@ -229,7 +229,7 @@ def update_status():
 						lcd.cursor_pos = (1,0) # 2nd Line
 						lcd.write_string(str(datetime.datetime.fromtimestamp(countdown).strftime("%-M:%S"))+(" "*(8-len(str(datetime.timedelta(seconds=countdown))))))
 						#print(str(countdown))
-		else:
+		else: # If we're not actively in auto or manual mode, we're in "idle" mode.
 			status = "Idle"
 			if status != last_status:
 				print(status)
@@ -246,35 +246,37 @@ def update_status():
 		lcd.write_string(message(" "*(20-len(status)))
 		last_message = message
 
+# Start and clear the character LCD
 lcd = CharLCD(i2c_expander='PCF8574', address=0x27, port=1, cols=20, rows=4, dotsize=8)
 lcd.clear()
 
-lcd.write_string(start_text)
+lcd.write_string(start_text) # Display startup text
 lcd.cursor_pos = (3,0) # Bottom Line
 lcd.write_string('Starting...')
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(mode_led_pin, GPIO.OUT)
-GPIO.setup(trigger_led_pin, GPIO.OUT)
-GPIO.setup(mode_button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(trigger_button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(candles_1_pin, GPIO.OUT)
-GPIO.setup(candles_2_pin, GPIO.OUT)
+# Configure GPIO
+GPIO.setmode(GPIO.BCM) # Use broadcom chip pin numbers
+GPIO.setup(mode_led_pin, GPIO.OUT) # Set the mode led pin to be an output
+GPIO.setup(trigger_led_pin, GPIO.OUT) # Set the trigger led pin to be an output
+GPIO.setup(mode_button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Set the mode button pin to be an input and enable internal pullup resistor
+GPIO.setup(trigger_button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Set the trigger button pin to be an input and enable internal pullup resistor
+GPIO.setup(candles_1_pin, GPIO.OUT) # Set the first candle pin to be an output
+GPIO.setup(candles_2_pin, GPIO.OUT) # Set the second candle pin to be an output
 
-GPIO.output(mode_led_pin, 1)
-GPIO.output(trigger_led_pin, 1)
+GPIO.output(mode_led_pin, 1) # Turn on the mode led (startup test)
+GPIO.output(trigger_led_pin, 1) # Turn on the trigger led (startup test)
 
 def reset_candles():
-	GPIO.output(candles_1_pin, 1)
-	GPIO.output(candles_2_pin, 1)
+	GPIO.output(candles_1_pin, 1) # Turn on candle 1
+	GPIO.output(candles_2_pin, 1) # Turn on candle 2
 
 def candle_burnout_1():
-	GPIO.output(candles_1_pin, 0)
-	GPIO.output(candles_2_pin, 1)
+	GPIO.output(candles_1_pin, 0) # Turn off candle 1
+	GPIO.output(candles_2_pin, 1) # Leave candle 2 on
 
 def candle_burnout_2():
-	GPIO.output(candles_1_pin, 0)
-	GPIO.output(candles_2_pin, 0)
+	GPIO.output(candles_1_pin, 0) # Turn off candle 1
+	GPIO.output(candles_2_pin, 0) # Turn off candle 2
 
 
 def get_303030():
