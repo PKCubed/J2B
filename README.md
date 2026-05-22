@@ -4,7 +4,7 @@
 ## Diagrams and Documentation
 **A wiring diagram can be found [here](https://github.com/PKCubed/J2B/blob/master/J2B%20Wiring%20Diagram.pdf)**. This diagram shows the connections between many of the devices that need to be set up in the village every year, as well as connections that should be permanently set up.
 
-**A wiring map can be found [here](https://github.com/PKCubed/J2B/blob/master/J2B%20Wiring%20Map.pdf)**. This diagram shows the connections in the village, and where each connection goes to and from on a high resolution aerial image of the village. *This diagram does not render the background image correctly in GitHub. It will likely need to be downloaded first*
+**A wiring map can be found [here](https://github.com/PKCubed/J2B/blob/master/J2B%20Wiring%20Map.pdf)**. This diagram shows the connections in the village, and where each connection goes to and from on a high resolution aerial image of the village. *This diagram does not render the background image correctly in GitHub. It will likely need to be downloaded first.*
 
 ## System Overview
 Journey to Bethlehem requires the actors to transition each group of journeyers along to the next part of their journey. The actors need to know when to do this, and keep the whole operation on a pretty rigid schedule. If things are out of sync, we’ll have too many groups in some areas, getting jumbled together, or not enough groups in the village, and we won’t be able to get through the number of groups we’d like to as fast as we would like to. There are a lot of people who want to experience Bethlehem, and getting everyone the opportunity is our goal.
