@@ -1,5 +1,5 @@
 # J2B
-Wenatchee Seventh Day Adventist Church's Journey to Bethlehem Timekeeping Technology Systems
+### Wenatchee Seventh Day Adventist Church's Journey to Bethlehem Timekeeping Technology Systems
 
 ## Diagrams and Documentation
 **A wiring diagram can be found [here](https://github.com/PKCubed/J2B/blob/master/J2B%20Wiring%20Diagram.pdf)**. This diagram shows the connections between many of the devices that need to be set up in the village every year, as well as connections that should be permanently set up.
